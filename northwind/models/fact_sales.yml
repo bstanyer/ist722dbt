@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: Each row represents a product in an order (multiple rows for most orders)
+    columns:
+      - name: OrderId
+        description: Source key used for drill through
+        tests:
+            - unique
+            - not_null
+      - name: customerkey
+        description: fk to dim_customer
+      - name: employeekey
+        description: fk to dim_employee
+      - name: orderdatekey
+        description: fk to dim_date representing date the order was placed
+      - name: productkey
+        description: fk to dim_product
+      - name: quantity
+        description: quanitity of the product on the order (additive)
+        tests: 
+          - not_null
+      - name: extendedpriceamount
+        description: quantity * procuct price (additive)
+        tests:
+          - not_null
+      - name: discountamount
+        description: extended price * discount (additive)
+        tests:
+          - not_null
+      - name: soldamount
+        description: extended price - discount amount (additive)
+        tests:
+          - not_null
