@@ -1,0 +1,5 @@
+version: 2
+
+models: 
+  - name: obt_sales
+    description: Each row represents an individual product on an order
