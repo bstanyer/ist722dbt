@@ -1,0 +1,54 @@
+version: 2
+
+sources:
+  - name: conformed
+    database: raw
+    schema: conformed
+
+    tables:
+      - name: DateDimension
+        columns:
+          - name: DateKey
+            tests:
+              - unique
+
+  - name: fudgeflix_v3
+    database: raw
+    schema: fudgeflix_v3
+
+    tables:
+      - name: ff_Accounts
+        columns:
+          - name: account_id
+            tests:
+              - unique
+
+      - name: ff_account_billing
+        columns:
+          - name: ab_id
+            tests:
+              - unique
+
+  - name: fudgemart_v3
+    database: raw
+    schema: fudgemart_v3
+
+    tables:
+      - name: fm_customers
+        columns:
+          - name: customer_id
+            tests:
+              - unique
+
+      - name: fm_orders
+        columns:
+          - name: order_id
+            tests:
+              - unique
+
+      - name: fm_order_details
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - order_id
+                - product_id
