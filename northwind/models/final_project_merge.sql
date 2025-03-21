@@ -58,5 +58,3 @@ select
     *
 from combined_data
 ;
- 
- 
