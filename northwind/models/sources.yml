@@ -59,3 +59,21 @@ sources:
             combination_of_columns:
               - OrderId
               - ProductId
+
+  - name: fugdeflix_v3
+    database: raw
+    schema: fudgeflix_v3
+
+    tables:
+      - name: ff_accounts
+      - name: ff_account_billing
+
+  - name: fugdemart_v3
+    database: raw
+    schema: fudgemart_v3
+
+    tables:
+      - name: fm_customers
+      - name: fm_orders
+      - name: fm_order_details
+      - name: fm_products
