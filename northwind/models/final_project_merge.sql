@@ -57,4 +57,3 @@ select
     row_number() over (order by source_key) as dimension_key,  -- Generates unique surrogate key
     *
 from combined_data
-;
