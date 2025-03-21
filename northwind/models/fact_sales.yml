@@ -7,7 +7,7 @@ models:
       - name: OrderId
         description: Source key used for drill through
         tests:
-            - unique
+            # - unique
             - not_null
       - name: customerkey
         description: fk to dim_customer

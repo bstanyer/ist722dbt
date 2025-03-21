@@ -59,3 +59,21 @@ sources:
             combination_of_columns:
               - OrderId
               - ProductId
+
+
+  - name: fudgeflix_v3  # Fix typo: 'fugdeflix_v3' → 'fudgeflix_v3'
+    database: raw
+    schema: fudgeflix_v3
+    tables:
+      - name: ff_Accounts
+      - name: ff_account_billing
+
+  - name: fudgemart_v3  # Fix typo: 'fugdemart_v3' → 'fudgemart_v3'
+    database: raw
+    schema: fudgemart_v3
+    tables:
+      - name: fm_customers
+      - name: fm_orders
+      - name: fm_order_details
+      - name: fm_products
+
