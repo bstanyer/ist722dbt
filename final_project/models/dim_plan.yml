@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_plan
+    description: Plan Dimension, One plan info per order.
+    columns:
+      - name: plankey
+        description: The surrogate key
+        tests:
+          - not_null
+          - unique
+      - name: plan_id
+        description: Primary key of the source systems (business key)
+        tests:
+          - not_null
+          - unique

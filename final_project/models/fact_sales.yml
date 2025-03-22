@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: fact_order_fulfillment
+    description: Order level fact table. Transaction one reo shows price amount of a customers product and/or plan.
+    columns:
+      - name: OrderId
+        description: Degenerate dimension for of the order.
+        tests:
+            - unique
+            - not_null
+      - name: customerkey
+        description: Dimension key for dim_customer
+      - name: productkey
+        description: Dimension key for dim_product
+      - name: plankey
+        description: Dimension key for dim_plans    
+      - name: orderedatekey
+        description: Dimension key for dim_date
+      - name: accountopenedon
+        description: Dimension key for dim_date
+
+      - name: quantity
+        description: additive fact for total quantity of product sold on order
+      - name: accounts
+        description: additive fact for total amount of accounts
+      - name: retailpriceamount
+        description: additive fact quantity * retailpriceamount
+      - name: wholesalepriceamount
+        description: additive fact quantity * wholesaleprice
+      - name: soldamount
+        description: additive fact retaileprice - wholesaleprice
+      - name: planpriceamount
+        description: additive fact accounts * plan price

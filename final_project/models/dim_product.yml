@@ -1,22 +1,22 @@
 version: 2
 
 models:
-  - name: dim_customer
-    description: Customer Dimension. One order or plan per customer
+  - name: dim_product
+    description: Product Dimension. One product infor per order
     columns:
-      - name: customerkey
+      - name: productkey
         description: The surrogate key
         tests:
+          - not_null
           - unique
-      - name: customer_id
+      - name: product_id
         description: Primary key of the source systems (business key)
         tests:
+          - not_null
           - unique
-      - name: account_id
+      - name: vendor_id
         description: Primary key of the source systems (business key)
         tests:
+          - not_null
           - unique
-
-          
-          
           
