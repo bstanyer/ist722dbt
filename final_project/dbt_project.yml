@@ -34,6 +34,10 @@ models:
     +materialized: table
     database: analytics
     +schema: fudgecompanies
+
+# Add the on-run-start hook here:
+on-run-start:
+  - "create schema if not exists analytics.fudgecompanies"
   
 
   

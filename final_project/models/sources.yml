@@ -17,7 +17,7 @@ sources:
     schema: fudgeflix_v3
 
     tables:
-      - name: ff_Accounts
+      - name: ff_accounts
         columns:
           - name: account_id
             tests:
@@ -28,7 +28,12 @@ sources:
           - name: ab_id
             tests:
               - unique
-
+      - name: ff_plans
+        columns:
+          - name: plan_id
+            tests:
+              - unique
+      
   - name: fudgemart_v3
     database: raw
     schema: fudgemart_v3
@@ -39,6 +44,12 @@ sources:
           - name: customer_id
             tests:
               - unique
+      - name: fm_products
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - product_id
+                - product_vendor_id
 
       - name: fm_orders
         columns:
