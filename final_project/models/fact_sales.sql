@@ -13,7 +13,7 @@ stg_order_details as (
         sum(od.order_qty * p.product_retail_price) as retailpriceamount,
         sum(od.order_qty * p.product_wholesale_price) as wholesalepriceamount,
         sum(od.order_qty * (p.product_retail_price - p.product_wholesale_price)) as soldamount
-    from {{source('fudgemart_v3', 'fm_order_details')}} od
+    from {{source('fudgemart_v3', 'fm_order_details')}} od 
     join {{source('fudgemart_v3', 'fm_products')}} p
       on od.product_id = p.product_id
     group by od.order_id, od.product_id, p.product_retail_price, p.product_wholesale_price
@@ -30,11 +30,12 @@ stg_account_plan_details as (
         ab.ab_account_id,
         {{ dbt_utils.generate_surrogate_key(['ab.ab_plan_id']) }} as productkey,
         count(ab.ab_account_id) as quantity,
-        sum(pl.plan_price) as soldamount
+        sum(pl.plan_price) as soldamount,
+        ab.date_key as orderdatekey
     from {{source('fudgeflix_v3', 'ff_account_billing')}} ab
     join {{source('fudgeflix_v3', 'ff_plans')}} pl
       on ab.ab_plan_id = pl.plan_id
-    group by ab.ab_account_id, ab.ab_plan_id
+    group by ab.ab_account_id, ab.ab_plan_id, ab.date_key
 )
 
 select * 
@@ -63,7 +64,7 @@ from (
         null as order_id,
         a.account_id as id,
         a.customerkey,
-        null as orderdatekey,
+        ad.orderdatekey,
         ad.productkey,
         null as quantity,
         null as retailpriceamount,

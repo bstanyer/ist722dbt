@@ -5,7 +5,7 @@ with stg_products as (
 select
     {{
         dbt_utils.generate_surrogate_key(
-            ["product_id", "product_vendor_id"]
+            ["product_id"]
         )
     }} as productkey,
     stg_products.*
