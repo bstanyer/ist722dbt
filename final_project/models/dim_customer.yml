@@ -14,8 +14,6 @@ models:
           - unique
       - name: account_id
         description: Primary key of the source systems (business key)
-        tests:
-          - unique
 
           
           

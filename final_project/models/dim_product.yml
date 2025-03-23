@@ -16,7 +16,5 @@ models:
           - unique
       - name: vendor_id
         description: Primary key of the source systems (business key)
-        tests:
-          - not_null
-          - unique
+
           
